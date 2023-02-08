@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.samples.quickstart.entity.MyClass;
 import com.baomidou.mybatisplus.samples.quickstart.entity.User;
 import com.baomidou.mybatisplus.samples.quickstart.service.MyClassService;
 import com.baomidou.mybatisplus.samples.quickstart.service.UserService;
+import com.baomidou.mybatisplus.samples.quickstart.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private MyClassService myClassService;
+    @Autowired
+    private UserServiceImpl userServiceImpl;
 
     @RequestMapping("findAll")
     public List<User> findAll(){
@@ -37,5 +40,14 @@ public class UserController {
         myClassService.methodOuter();
 
         return  userService.list().toString()+"\n"+myClassService.list().toString();
+    }
+
+    @RequestMapping("isolatoionTest1")
+    public User isolationTest1(){
+        return userServiceImpl.isolation1();
+    }
+    @RequestMapping("isolatoionTest2")
+    public User isolationTest2() throws InterruptedException {
+        return userServiceImpl.isolation2();
     }
 }
