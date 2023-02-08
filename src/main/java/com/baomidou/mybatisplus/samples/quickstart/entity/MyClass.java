@@ -7,8 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
-@TableName(value = "`user`")
-public class User {
+@TableName(value = "`myclass`")
+public class MyClass {
     /**
      * 主键ID
      */
@@ -20,16 +20,4 @@ public class User {
      */
     @TableField(value = "`name`")
     private String name;
-
-    /**
-     * 年龄
-     */
-    @TableField(value = "age")
-    private Integer age;
-
-    /**
-     * 邮箱
-     */
-    @TableField(value = "email")
-    private String email;
 }

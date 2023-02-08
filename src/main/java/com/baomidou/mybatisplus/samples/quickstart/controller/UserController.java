@@ -20,4 +20,12 @@ public class UserController {
         List<User> list = userService.list();
         return list;
     }
+
+    @RequestMapping("transactionTest")
+    public List<User> transactionTest() throws Exception {
+        List<User> list = userService.list();
+        userService.removeByIds(list);
+
+        return  userService.list();
+    }
 }
